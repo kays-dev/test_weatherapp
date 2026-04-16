@@ -14,7 +14,7 @@ export default async function handler(req, res) {
   };
 
   //URL de l'API
-  const url = "https://api.open-meteo.com/v1/forecast";
+  const url = process.env.OPEN_METEO_URL;
 
   //Réponse de l'API en format JSON
   const openMeteoRes = await fetchWeatherApi(url, req);
