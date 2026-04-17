@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import { useData } from "./api/useData";
+
 import { MainCard } from "../components/MainCard";
 import { ContentBox } from "../components/ContentBox";
 import { Header } from "../components/Header";
@@ -12,30 +14,20 @@ import { ErrorScreen } from "../components/ErrorScreen";
 import styles from "../styles/Home.module.css";
 
 export const App = () => {
-  const [weatherData, setWeatherData] = useState();
+  const { weatherData, loading, error } = useData();
+
   const [unitSystem, setUnitSystem] = useState("metric");
-
-  useEffect(() => {
-    const getData = async () => {
-      const data = await fetch("api/data");
-
-      console.log("Status : " + data.status);
-      console.log("Data.js : " + await data.text());
-
-      console.log(
-        `\nCurrent temperature_2m: ${data.temperature}`);
-
-      setWeatherData({ ...data });
-    };
-    getData();
-  }, []);
-
   const changeSystem = () =>
     unitSystem == "metric"
       ? setUnitSystem("imperial")
       : setUnitSystem("metric");
 
-  return weatherData && !weatherData.message ? (
+  return error ? (
+    <ErrorScreen errorMessage="Une erreur s'est produite...">
+    </ErrorScreen>
+  ) : loading ? (
+    <LoadingScreen loadingMessage="Loading data..." />
+  ) : (
     <div className={styles.wrapper}>
       <MainCard
         city={weatherData.cityName}
@@ -53,11 +45,6 @@ export const App = () => {
         <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
       </ContentBox> */}
     </div>
-  ) : weatherData && weatherData.message ? (
-    <ErrorScreen errorMessage="Une erreur s'est produite...">
-    </ErrorScreen>
-  ) : (
-    <LoadingScreen loadingMessage="Loading data..." />
   );
 };
 
