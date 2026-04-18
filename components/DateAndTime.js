@@ -5,11 +5,11 @@ export const DateAndTime = ({ weatherData, unitSystem }) => {
   return (
     <div className={styles.wrapper}>
       <h2>
-        {`${getWeekDay(weatherData)}, ${getTime(
+        {`${getWeekDay(unitSystem, weatherData.reqTime)}, ${getTime(
           unitSystem,
-          weatherData.dt,
-          weatherData.timezone
-        )} ${getAMPM(unitSystem, weatherData.dt, weatherData.timezone)}`}
+          Date.now(),
+          weatherData.timezoneOffset
+        )} ${unitSystem === "imperial" ? getAMPM(unitSystem, Date.now(), weatherData.timezoneOffset) : ""}`}
       </h2>
     </div>
   );

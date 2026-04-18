@@ -1,8 +1,6 @@
 export const ctoF = (c) => (c * 9) / 5 + 32;
 
-export const mpsToMph = (mps) => (mps * 2.236936).toFixed(2);
-
-export const kmToMiles = (km) => (km / 1.609).toFixed(1);
+export const kmToMiles = (km) => (km / 1.609);
 
 export const timeTo12HourFormat = (time) => {
   let [hours, minutes] = time.split(":");
@@ -12,28 +10,21 @@ export const timeTo12HourFormat = (time) => {
 export const degToCompass = (num) => {
   var val = Math.round(num / 22.5);
   var arr = [
-    "N",
-    "NNE",
-    "NE",
-    "ENE",
-    "E",
-    "ESE",
-    "SE",
-    "SSE",
-    "S",
-    "SSW",
-    "SW",
-    "WSW",
-    "W",
-    "WNW",
-    "NW",
-    "NNW",
+    "/direction_icons/north.svg",
+    "/direction_icons/northeast.svg",
+    "/direction_icons/east.svg",
+    "/direction_icons/southeast.svg",
+    "/direction_icons/south.svg",
+    "/direction_icons/southwest.svg",
+    "/direction_icons/west.svg",
+    "/direction_icons/northwest.svg"
   ];
-  return arr[val % 16];
+
+  return arr[val % 8];
 };
 
-export const unixToLocalTime = (unixSeconds, timezone) => {
-  let time = new Date((unixSeconds + timezone) * 1000)
+export const unixToLocalTime = (unixMs, timezoneSec) => {
+  let time = new Date(unixMs + timezoneSec * 1000)
     .toISOString()
     .match(/(\d{2}:\d{2})/)[0];
 

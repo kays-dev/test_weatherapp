@@ -37,13 +37,13 @@ export const App = () => {
         unitSystem={unitSystem}
         weatherData={weatherData}
       />
-      {/* <ContentBox>
+      <ContentBox>
         <Header>
           <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
         </Header>
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
-      </ContentBox> */}
+      </ContentBox>
     </div>
   );
 };

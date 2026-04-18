@@ -23,18 +23,11 @@ export const MainCard = ({
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
-        {/* {unitSystem == "metric" */}
-        {Math.round(weatherData.temperature)}
-        {/* : Math.round(ctoF(weatherData.temperature))}
-        °{unitSystem == "metric" ? "C" : "F"} */}
+        {unitSystem == "metric" ?
+          Math.round(weatherData.temperature)
+          : Math.round(ctoF(weatherData.temperature))}
+        °{unitSystem == "metric" ? "C" : "F"}
       </h1>
-      <p>
-        Feels like{" "}
-        {/* {unitSystem == "metric" */}
-        {Math.round(weatherData.feelsLike)}
-        {/* : Math.round(ctoF(weatherData.feelsLike))}
-        °{unitSystem == "metric" ? "C" : "F"} */}
-      </p>
     </div>
   );
 };

@@ -1,32 +1,27 @@
 import {
   unixToLocalTime,
   kmToMiles,
-  mpsToMph,
   timeTo12HourFormat,
 } from "./converters";
 
-export const getWindSpeed = (unitSystem, windInMps) =>
-  unitSystem == "metric" ? windInMps : mpsToMph(windInMps);
+export const getWindSpeed = (unitSystem, windInKmh) =>
+  unitSystem == "metric" ? windInKmh : kmToMiles(windInKmh);
 
-export const getVisibility = (unitSystem, visibilityInMeters) =>
+export const getTime = (unitSystem, currentTime, timezoneSec) =>
   unitSystem == "metric"
-    ? (visibilityInMeters / 1000).toFixed(1)
-    : kmToMiles(visibilityInMeters / 1000);
+    ? unixToLocalTime(currentTime, timezoneSec)
+    : timeTo12HourFormat(unixToLocalTime(currentTime, timezoneSec));
 
-export const getTime = (unitSystem, currentTime, timezone) =>
-  unitSystem == "metric"
-    ? unixToLocalTime(currentTime, timezone)
-    : timeTo12HourFormat(unixToLocalTime(currentTime, timezone));
+export const getAMPM = (unitSystem, currentTime, timezoneSec) => {
+  const hours = Number(unixToLocalTime(currentTime, timezoneSec).split(":")[0]);
 
-export const getAMPM = (unitSystem, currentTime, timezone) =>
-  unitSystem === "imperial"
-    ? unixToLocalTime(currentTime, timezone).split(":")[0] >= 12
-      ? "PM"
-      : "AM"
-    : "";
+  return hours >= 12
+    ? "PM"
+    : "AM"
+};
 
-export const getWeekDay = (weatherData) => {
-  const weekday = [
+export const getWeekDay = (unitSystem, date) => {
+  const weekday = unitSystem === "imperial" ? [
     "Sunday",
     "Monday",
     "Tuesday",
@@ -34,8 +29,16 @@ export const getWeekDay = (weatherData) => {
     "Thursday",
     "Friday",
     "Saturday",
+  ] : [
+    "Dimanche",
+    "Lundi",
+    "Mardi",
+    "Mercredi",
+    "Jeudi",
+    "Vendredi",
+    "Samedi",
   ];
   return weekday[
-    new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
+    new Date(date).getUTCDay()
   ];
 };

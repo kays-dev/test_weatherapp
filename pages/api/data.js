@@ -68,7 +68,7 @@ export default async function handler(req, res) {
     //
 
     // Fin de la requête 
-    const completed = new Date(now + utcOffsetSeconds * 1000)
+    const completed = new Date(now + utcOffsetSeconds * 1000);
     //
 
     // Données accessibles en front
@@ -79,7 +79,9 @@ export default async function handler(req, res) {
       cityLat: latitude,
       cityLon: longitude,
       cityEle: elevation,
-      timezone,
+      timezone: timezone,
+      timezoneOffset: utcOffsetSeconds,
+
 
       reqTime: completed,
       temperature: temperature_2m,
