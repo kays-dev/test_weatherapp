@@ -1,25 +1,18 @@
 import Image from "next/image";
 import { ctoF } from "../services/converters";
+import { weatherToIcon } from "../services/helpers";
 import styles from "./MainCard.module.css";
 
 export const MainCard = ({
-  city,
-  country,
-  description,
-  iconName,
   unitSystem,
-  weatherData,
+  weatherData
 }) => {
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.location}>
-        {city}, {country}
-      </h1>
-      <p className={styles.description}>{description}</p>
       <Image
-        width="300px"
-        height="300px"
-        src={`/icons/${iconName}.svg`}
+        width="200px"
+        height="200px"
+        src={weatherToIcon(unitSystem, weatherData.clouds, weatherData.precipitationProbability).icon}
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
@@ -28,6 +21,7 @@ export const MainCard = ({
           : Math.round(ctoF(weatherData.temperature))}
         °{unitSystem == "metric" ? "C" : "F"}
       </h1>
+      <p className={styles.description}>{weatherToIcon(unitSystem, weatherData.clouds, weatherData.precipitationProbability).description}</p>
     </div>
   );
 };

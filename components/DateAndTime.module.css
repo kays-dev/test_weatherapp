@@ -2,3 +2,8 @@
   display: flex;
   align-items: center;
 }
+
+.location {
+  font-size: 38px;
+  margin-bottom: 10px;
+}

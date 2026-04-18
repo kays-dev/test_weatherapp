@@ -1,7 +1,5 @@
 import { degToCompass, ctoF } from "../services/converters";
 import {
-  getTime,
-  getAMPM,
   getWindSpeed,
 } from "../services/helpers";
 import { MetricsCard } from "./MetricsCard";
@@ -9,7 +7,6 @@ import styles from "./MetricsBox.module.css";
 
 export const MetricsBox = ({ weatherData, unitSystem }) => {
   return (
-    // if !isDay add new class to darkmode
     <div className={styles.wrapper}>
       <MetricsCard
         title={"Ressenti"}
