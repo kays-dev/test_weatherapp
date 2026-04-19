@@ -9,19 +9,19 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
   return (
     <div className={styles.wrapper}>
       <MetricsCard
-        title={"Ressenti"}
+        title={unitSystem == "metric" ? "Ressenti" : "Feels like"}
         iconSrc={"/sect_icons/thermometer.svg"}
         metric={Math.round(unitSystem == "metric" ? weatherData.feelsLike : ctoF(weatherData.feelsLike))}
         unit={unitSystem == "metric" ? "°C" : "°F"}
       />
       <MetricsCard
-        title={"Précipitations"}
+        title={unitSystem == "metric" ? "Précipitations" : "Precipitation"}
         iconSrc={"/sect_icons/umbrella.svg"}
         metric={weatherData.precipitationProbability}
         unit={"%"}
       />
       <MetricsCard
-        title={"Vitesse du vent"}
+        title={unitSystem == "metric" ? "Vitesse du vent" : "Wind speed"}
         metric={getWindSpeed(unitSystem, weatherData.windSpeed)}
         unit={unitSystem == "metric" ? "Km/h" : "m/h"}
         direction={degToCompass(weatherData.windDirection)}
