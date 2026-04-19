@@ -1,14 +1,10 @@
 .wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  width: 95vw;
-  height: 90vh;
+  gap: 5%;
+  width: 100vw;
+  height: 100vh;
   background: #fdf9ecad;
-  box-shadow: 0 0 16px 0 #3e2a7094;
-  backdrop-filter: blur(8px);
-  border-radius: 32px;
-  border: solid 2px #c0acf43e;
   font-size: 2rem;
   padding: 2%;
 }
@@ -22,12 +18,6 @@
 @media only screen and (max-width: 600px) {
   .wrapper {
     padding: 2vh 4vw;
-    box-shadow: none;
-    backdrop-filter: none;
-    border-radius: 0;
-    border: none;
-    width: 100vw;
-    height: 100vh;
     font-size: 1.2rem;
   }
 }
