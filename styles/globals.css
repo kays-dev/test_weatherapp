@@ -6,16 +6,16 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  background-image: radial-gradient(
-    circle 993px at 0.5% 50.5%,
-    rgba(137, 171, 245, 0.37) 0%,
-    rgba(245, 247, 252, 1) 100.2%
-  );
+  background: #fdf9ec;
   font-family: "Varela Round", sans-serif;
 }

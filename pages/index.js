@@ -63,14 +63,16 @@ export const App = () => {
     <LoadingScreen loadingMessage="Loading data..." />
   ) : (
     <div className={styles.wrapper}>
+      <Header>
+        <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
+      </Header>
+
       <MainCard
         unitSystem={unitSystem}
         weatherData={weatherData}
       />
+
       <ContentBox>
-        <Header>
-          <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
-        </Header>
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         <RefreshCard time={nextRefresh} unitSystem={unitSystem} />
       </ContentBox>
