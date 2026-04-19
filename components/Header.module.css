@@ -1,13 +1,15 @@
 .wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 20px;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 1%;
+  margin-bottom: 2%;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 600px) {
   .wrapper {
-    grid-template-columns: 1fr;
-    place-items: center;
+    flex-direction: column;
+    justify-content: center;
   }
 }

@@ -1,13 +1,14 @@
 .wrapper {
   display: grid;
   align-items: center;
-  justify-content: space-between;
-  background-color: rgba(192, 172, 244, 0.272);
+  background: linear-gradient(
+    rgb(62, 42, 112, 0.55),
+    rgb(192, 172, 244, 0.24) 100%
+  );
   grid-template-columns: 1fr 1fr;
   width: 100%;
-  padding: 2% 10%;
+  padding: 2%;
   border-radius: 20px;
-  gap: 5%;
 }
 
 .weather {

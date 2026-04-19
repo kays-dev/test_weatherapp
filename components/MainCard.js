@@ -13,7 +13,7 @@ export const MainCard = ({
         <Image
           width="200%"
           height="200%"
-          src={weatherToIcon(unitSystem, weatherData.clouds, weatherData.precipitationProbability).icon}
+          src={weatherToIcon(unitSystem, weatherData.clouds, weatherData.precipitationProbability, weatherData.isDay).icon}
           alt="weatherIcon"
         />
 

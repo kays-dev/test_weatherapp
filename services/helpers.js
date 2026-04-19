@@ -58,38 +58,43 @@ export const getFullDate = (unitSystem, date) => {
   return day;
 };
 
-export const weatherToIcon = (unitSystem, clouds, precipitation) => {
+export const weatherToIcon = (unitSystem, clouds, precipitation, isDay) => {
   var icon = "";
   var description = "";
 
   if (precipitation > 50) {
-    icon = "/weather_icons/rainy.svg";
+    icon = "/weather_icons/rainy.png";
     description = unitSystem === "metric" ? "Pluvieux" : "Rainy";
 
   } else if (precipitation > 20) {
-    icon = "/weather_icons/showers.svg";
+    icon = "/weather_icons/showers.png";
     description = unitSystem === "metric" ? "Averses avec éclaircies" : "Showers";
 
   } else {
     if (clouds <= 20) {
-      icon = "/weather_icons/sunny.svg";
-      description = unitSystem === "metric" ? "Ensoleillé" : "Sunny";
+      icon = "/weather_icons/sunny.png";
+      description = unitSystem === "metric" ? "Dégagé" : "Clear";
 
     } else if (clouds <= 40) {
-      icon = "/weather_icons/mostly_sunny.svg";
+      icon = "/weather_icons/mostly_sunny.png";
       description = unitSystem === "metric" ? "Voilé" : "Mostly sunny";
 
     } else if (clouds <= 60) {
-      icon = "/weather_icons/partly_cloudy.svg";
+      icon = "/weather_icons/partly_cloudy.png";
       description = unitSystem === "metric" ? "Partiellement nuageux" : "Partly cloudy";
 
     } else if (clouds <= 80) {
-      icon = "/weather_icons/overcast.svg";
+      icon = "/weather_icons/overcast.png";
       description = unitSystem === "metric" ? "Très nuageux" : "Overcast";
 
     } else if (clouds > 80) {
-      icon = "/weather_icons/cloudy.svg";
+      icon = "/weather_icons/cloudy.png";
       description = unitSystem === "metric" ? "Nuageux" : "Cloudy";
+
+    };
+
+    if (isDay != 1) {
+      icon = "/weather_icons/night.png";
 
     };
   };

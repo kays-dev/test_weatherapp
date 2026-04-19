@@ -22,6 +22,7 @@ export const App = () => {
 
   const [nextRefresh, setNextRefresh] = useState();
 
+  //Changement de système
   useEffect(() => {
     const interval = setInterval(() => {
       setUnitSystem(prev =>
@@ -34,9 +35,10 @@ export const App = () => {
     }
   }, [changeTime]);
 
+  //Countdown de la prochainne requête
   useEffect(() => {
     if (!weatherData) {
-      setNextRefresh("En attente du serveur...");
+      setNextRefresh(unitSystem === "metric" ? "En attente du serveur..." : "Awaiting server response...");
 
       return;
     };
@@ -44,7 +46,12 @@ export const App = () => {
     const updateNexRefresh = () => {
       const next = getNextRefresh(weatherData.reqTime, weatherData.timezoneOffset);
 
-      setNextRefresh(next);
+      if (next == "0") {
+        setNextRefresh(unitSystem === "metric" ? "Mise à jour..." : "Mise à jour...");
+
+      } else {
+        setNextRefresh(next);
+      };
     };
 
     updateNexRefresh();
@@ -65,6 +72,7 @@ export const App = () => {
     <div className={styles.wrapper}>
       <Header>
         <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
+        <RefreshCard time={nextRefresh} unitSystem={unitSystem} />
       </Header>
 
       <MainCard
@@ -74,7 +82,6 @@ export const App = () => {
 
       <ContentBox>
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
-        <RefreshCard time={nextRefresh} unitSystem={unitSystem} />
       </ContentBox>
     </div>
   );
