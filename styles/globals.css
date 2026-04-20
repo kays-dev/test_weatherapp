@@ -16,6 +16,7 @@ body {
   align-items: center;
   width: 100vw;
   min-height: 100vh;
-  background: white;
+  background: #fdf9ecad;
+  color: rgb(34, 23, 61);
   font-family: "Varela Round", sans-serif;
 }

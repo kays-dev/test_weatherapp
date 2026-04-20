@@ -1,8 +1,7 @@
 .wrapper {
-  max-width: 260px;
-  text-align: center;
-}
-
-.message {
-  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 3em;
+  color: rgba(112, 42, 80, 0.703);
 }

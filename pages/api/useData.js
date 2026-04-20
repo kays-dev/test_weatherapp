@@ -3,19 +3,21 @@ import { useState, useEffect } from "react";
 export function useData(refreshTime = 3600 * 1000) {
     const [weatherData, setWeatherData] = useState(null);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [errorStatus, setErrorStatus] = useState(null);
 
     useEffect(() => {
 
 
         const getData = async () => {
             try {
-                setError(null)
+                setErrorMessage(null);
+                setErrorStatus(null);
 
                 const res = await fetch("api/data");
-
                 if (!res.ok) {
-                    throw new Error(`Erreur HTTP: ${res.status}`)
+                    const errorData = await res.json().catch(() => ({}));;
+                    throw { message: errorData.error, status: res.status };
                 }
 
                 const data = await res.json();
@@ -23,7 +25,8 @@ export function useData(refreshTime = 3600 * 1000) {
                 setWeatherData(data);
                 setLoading(false);
             } catch (err) {
-                setError(err.message || "Une erreur s'est produite");
+                setErrorMessage(err.message || "Une erreur s'est produite...");
+                setErrorStatus(err.status);
                 setLoading(false);
             }
         };
@@ -37,5 +40,5 @@ export function useData(refreshTime = 3600 * 1000) {
         }
     }, [refreshTime]);
 
-    return { weatherData, loading, error };
+    return { weatherData, loading, errorMessage, errorStatus };
 }

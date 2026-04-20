@@ -1,10 +1,10 @@
 import styles from "./ErrorScreen.module.css";
 
-export const ErrorScreen = ({ errorMessage, children }) => {
+export const ErrorScreen = ({ errorStatus, errorMessage }) => {
   return (
     <div className={styles.wrapper}>
-      <h1 className={styles.message}>{errorMessage}</h1>
-      {children}
+      <h1>Erreur {errorStatus}</h1>
+      <p className={styles.message}>{errorMessage}</p>
     </div>
   );
 };

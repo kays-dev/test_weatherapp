@@ -3,46 +3,49 @@ import { fetchWeatherApi } from "openmeteo";
 import city from "./location.json";
 
 export default async function handler(req, res) {
-  try {
-    // Recherche des coordonnées de la ville choisie
-    var name = city.name;
-    var lat = 0;
-    var long = 0;
-    var country = "";
-    var tz = "";
 
-    const getCoordinates = async () => {
-      const url = process.env.OPEN_METEO_GEOCODING;
-      const params = {
-        name: name,
-        count: 1,
-        language: "fr"
-      };
-      const query = `?name=${params.name}&count=${params.count}&language=${params.language}`;
+  // Recherche des coordonnées de la ville choisie
+  var name = city.name;
+  var lat = 0;
+  var long = 0;
+  var country = "";
+  var tz = "";
 
-      try {
-        const response = await fetch(url + query);
-        if (!response.ok) {
-          throw new Error(`Response status: ${response.status}`);
-        }
-
-        const json = await response.json();
-        const cityData = json.results[0];
-
-        name = cityData.name;
-        lat = cityData.latitude;
-        long = cityData.longitude;
-        country = cityData.country;
-        tz = cityData.timezone;
-
-        return { name, lat, long, country, tz }
-      } catch (error) {
-        console.error("GEOCODING API ERROR:", error);
-        res.status(500).json({ error: error.message });
-      }
+  const getCoordinates = async () => {
+    const url = process.env.OPEN_METEO_GEOCODING;
+    const params = {
+      name: name,
+      count: 1,
+      language: "fr"
     };
+    const query = `?name=${params.name}&count=${params.count}&language=${params.language}`;
 
-    await getCoordinates();
+    try {
+      const response = await fetch(url + query);
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      };
+
+      const json = await response.json();
+
+      const cityData = json.results[0];
+
+      name = cityData.name;
+      lat = cityData.latitude;
+      long = cityData.longitude;
+      country = cityData.country;
+      tz = cityData.timezone;
+
+      return { name, lat, long, country, tz }
+    } catch (error) {
+      console.error("GEOCODING API ERROR:", error);
+      return res.status(400).json({ error: "Ville introuvable", status: 400 })
+    };
+  };
+
+  await getCoordinates();
+
+  try {
 
     // Paramètres pour la requête
     const params = {
@@ -138,6 +141,6 @@ export default async function handler(req, res) {
     return res.status(200).json(data);
   } catch (error) {
     console.error("FORECAST API ERROR:", error);
-    res.status(500).json({ error: error.message });
+    return res.status(500).json({ error: "Erreur serveur", status: 500 });
   }
 }

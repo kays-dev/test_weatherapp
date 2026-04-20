@@ -15,7 +15,7 @@ import { ErrorScreen } from "../components/ErrorScreen";
 import styles from "../styles/Home.module.css";
 
 export const App = () => {
-  const { weatherData, loading, error } = useData();
+  const { weatherData, loading, errorMessage, errorStatus } = useData();
 
   const [unitSystem, setUnitSystem] = useState("metric");
   const changeTime = 120 * 1000;
@@ -63,8 +63,8 @@ export const App = () => {
     };
   }, [weatherData]);
 
-  return error ? (
-    <ErrorScreen errorMessage="Une erreur s'est produite...">
+  return errorMessage ? (
+    <ErrorScreen errorMessage={errorMessage} errorStatus={errorStatus}>
     </ErrorScreen>
   ) : loading ? (
     <LoadingScreen loadingMessage="Loading data..." />
