@@ -5,7 +5,7 @@ export const DateAndTime = ({ weatherData, unitSystem }) => {
   return (
     <div className={styles.wrapper}>
       <h2 className={styles.location}>
-        {weatherData.cityName}, {weatherData.cityCountry.substring(0, 2).toUpperCase()}
+        {weatherData.cityName}, {weatherData.cityCountry}
       </h2>
       <p>
         {`${getFullDate(unitSystem, weatherData.reqTime)}, ${getFormattedTime(

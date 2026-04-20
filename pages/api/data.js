@@ -33,7 +33,7 @@ export default async function handler(req, res) {
       name = cityData.name;
       lat = cityData.latitude;
       long = cityData.longitude;
-      country = cityData.country;
+      country = cityData.country_code;
       tz = cityData.timezone;
 
       return { name, lat, long, country, tz }
