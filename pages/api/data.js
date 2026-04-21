@@ -44,6 +44,7 @@ export default async function handler(req, res) {
   };
 
   await getCoordinates();
+  //
 
   try {
 
@@ -59,7 +60,7 @@ export default async function handler(req, res) {
     //
 
     // URL de l'API
-    const url = process.env.OPEN_METEO_URL;
+    const url = process.env.OPEN_METEO_FORECAST;
     //
 
     // Réponse de l'API en format JSON

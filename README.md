@@ -1,47 +1,78 @@
-# Weather App
+# WEATHER APP ☀️
 
-Check the current weather on any city on the planet. Switch between metric and imperial units.
+Affichez la météo locale dans les transports en commun ! En français comme en anglais, mais aussi en système métrique ou impérial pour les voyageurs étrangers.
 
-![Alt img](https://images.ctfassets.net/zlsyc9paq6sa/3uBrJ07WSM40FpolgjInHY/7d886cb4187b52194bf9b63c183a1d3a/1627637330_x.gif)
+## 📓 CONTEXTE
 
-## Features
+Ce projet a été réalisé en individuel dans le cadre de la préparation à la journée de sélection pour le parcours de formation "Concepteur.trice Développeur.euse d’Application".
 
-1. User's ability to search cities
+    Scénario fournit
 
-2. Current local time and date
+        Votre agence a signé un contrat pour le développement d’interfaces météo à destination des usagers du réseau de transport en commun de plusieurs villes de taille moyenne en France. Les écrans seront intégrés aux écrans d’information dans les stations et dans les transports.
 
-3. Temperatures and humidity
+    Projet de départ
 
-4. Wind speed and direction
+        https://github.com/madzadev/weather-app
 
-5. Sunrise and sunset times
+## 🎯 FONCTIONNALITES
 
-6. Metric vs Imperial system
+### Globales
 
-7. Error handling and loading info
+- Données météo actualisées en fonction de la ville renseignée dans le fichier location.json
+- Décompte de la dernière actualisation à la prochaine actualisation
+- Changement du système métrique au système impérial et langue (français/anglais) toutes les 2 minutes
+- Heure et date locale
 
-## Installation
+### Données météo
 
-1. `git clone https://github.com/madzadev/weather-app.git`
+- Températures
+- Précipitations
+- Vitesse et direction du vent
 
-2. `cd weather-app`
+## 🛠 TECHNOLOGIES
 
-3. `npm install`
+### Front-end
 
-4. Log-in to [Openweathermap.com](https://openweathermap.org/)
+- React.js
+- HTML
+- CSS
 
-5. Create an API key
+### Back-end
 
-6. `cp .env.example .env.local`
+- Javascript
+- API Forecast Open Meteo
+- API Geocoding Open Meteo
 
-7. Paste API key for `OPENWEATHER_API_KEY`
+## 🚀 INSTALLATION
 
-8. `npm run dev`
+1. Cloner le projet
 
-## Contributions
+   ```bash
+       git clone git@github.com:kays-dev/test_weatherapp.git
+       cd weather-app
+   ```
 
-Any feature requests and pull requests are welcome!
+2. Installer les dépendances node.js
 
-## License
+   ```bash
+       npm install
+   ```
 
-The project is under [MIT license](https://choosealicense.com/licenses/mit/).
+3. Installer l'environnement du projet
+
+   ```bash
+       cp .env.example .env.local
+   ```
+
+4. Lancer le projet
+
+   ```bash
+       npm run dev
+   ```
+
+5. Changer la ville
+   - Aller dans location.json et modifier le nom de la ville
+
+## 📜 LICENSE
+
+Ce projet a été développé dans le cadre d'un test technique.
