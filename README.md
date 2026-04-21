@@ -8,11 +8,11 @@ Ce projet a été réalisé en individuel dans le cadre de la préparation à la
 
 ### Scénario fournit
 
-    Votre agence a signé un contrat pour le développement d’interfaces météo à destination des usagers du réseau de transport en commun de plusieurs villes de taille moyenne en France. Les écrans seront intégrés aux écrans d’information dans les stations et dans les transports.
+Votre agence a signé un contrat pour le développement d’interfaces météo à destination des usagers du réseau de transport en commun de plusieurs villes de taille moyenne en France. Les écrans seront intégrés aux écrans d’information dans les stations et dans les transports.
 
 ### Projet de départ
 
-    https://github.com/madzadev/weather-app
+https://github.com/madzadev/weather-app
 
 ## 🎯 FONCTIONNALITES
 
