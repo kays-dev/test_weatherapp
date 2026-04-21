@@ -48,7 +48,7 @@ https://github.com/madzadev/weather-app
 1. Cloner le projet
 
    ```bash
-       git clone git@github.com:kays-dev/test_weatherapp.git
+       git clone https://github.com/kays-dev/test_weatherapp.git
        cd weather-app
    ```
 
