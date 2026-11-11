@@ -73,6 +73,10 @@ https://github.com/madzadev/weather-app
 5. Changer la ville
    - Aller dans location.json et modifier le nom de la ville
 
+## 👥 AUTEURE
+
+Développé par **Krystal** ([@kays-dev](https://github.com/kays-dev)) dans le cadre d'un test technique, en avril 2026, à partir du projet de départ [madzadev/weather-app](https://github.com/madzadev/weather-app).
+
 ## 📜 LICENSE
 
 Ce projet a été développé dans le cadre d'un test technique.
